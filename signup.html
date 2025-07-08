@@ -1,0 +1,97 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup | TrulyPay</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 320px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .signup-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: darkgreen;
+    }
+
+    .message {
+      text-align: center;
+      font-size: 14px;
+      color: green;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .back-link a {
+      color: #199fd9;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="signup-box">
+  <h2>Create Account</h2>
+  <input type="email" id="newEmail" placeholder="Email">
+  <input type="password" id="newPassword" placeholder="Password">
+  <button onclick="handleSignup()">Sign Up</button>
+  <div class="message" id="signupMsg"></div>
+  <div class="back-link"><a href="login.html">Back to Login</a></div>
+</div>
+
+<script>
+  function handleSignup() {
+    const email = document.getElementById("newEmail").value.trim();
+    const password = document.getElementById("newPassword").value.trim();
+    const msg = document.getElementById("signupMsg");
+
+    if (email && password.length >= 4) {
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPass", password);
+      msg.textContent = "Signup successful! Go to login.";
+    } else {
+      msg.textContent = "Please enter valid email & password (min 4 characters)";
+      msg.style.color = "red";
+    }
+  }
+</script>
+
+</body>
+</html>
